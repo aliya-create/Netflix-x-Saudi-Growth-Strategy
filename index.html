@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Netflix x Saudi Growth Strategy</title>
+<style>
+    :root {
+        --netflix-red: #E50914;
+        --netflix-bg: #000;
+        --card-bg: #1a1a1a;
+        --text-gray: #aaa;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background: var(--netflix-bg);
+        color: #fff;
+        font-family: 'Netflix Sans', 'Helvetica Neue', Arial, sans-serif;
+        overflow-x: hidden;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: linear-gradient(180deg, #000 0%, #1a0000 50%, #000 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(229, 9, 20, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 50%, rgba(229, 9, 20, 0.1) 0%, transparent 50%);
+        animation: pulse 8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    .logo {
+        font-size: 4rem;
+        font-weight: 900;
+        color: var(--netflix-red);
+        margin-bottom: 2rem;
+        text-shadow: 0 0 20px rgba(229, 9, 20, 0.5);
+        letter-spacing: -2px;
+        position: relative;
+        z-index: 1;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .subtitle {
+        font-size: 1.5rem;
+        color: var(--text-gray);
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .scroll-hint {
+        font-size: 1rem;
+        color: #666;
+        animation: bounce 2s infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .slide {
+        min-height: 100vh;
+        padding: 80px 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-title {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        color: var(--netflix-red);
+        border-left: 5px solid var(--netflix-red);
+        padding-left: 20px;
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .stat-card {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d0000 100%);
+        padding: 30px;
+        border-radius: 15px;
+        border: 1px solid #333;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        animation: fadeIn 0.8s ease forwards;
+    }
+
+    .stat-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--netflix-red), #ff6b6b);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(229, 9, 20, 0.3);
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: var(--netflix-red);
+        margin-bottom: 10px;
+    }
+
+    .stat-label {
+        font-size: 1rem;
+        color: var(--text-gray);
+    }
+
+    .problem-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .problem-card {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 10px;
+        border-left: 4px solid var(--netflix-red);
+    }
+
+    .problem-card h3 {
+        color: var(--netflix-red);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+
+    .strategy-card {
+        background: linear-gradient(135deg, #2d0000 0%, #1a1a1a 100%);
+        padding: 40px;
+        border-radius: 15px;
+        margin: 30px 0;
+        border: 2px solid var(--netflix-red);
+    }
+
+    .strategy-title {
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .play-number {
+        background: var(--netflix-red);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .play-number:hover {
+        box-shadow: 0 0 15px rgba(229, 9, 20, 0.7);
+    }
+
+    .actions-list {
+        list-style: none;
+        margin: 20px 0;
+    }
+
+    .actions-list li {
+        padding: 10px 0;
+        padding-left: 30px;
+        position: relative;
+    }
+
+    .actions-list li::before {
+        content: '▶';
+        color: var(--netflix-red);
+        position: absolute;
+        left: 0;
+    }
+
+    .impact-box {
+        background: rgba(229, 9, 20, 0.1);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        border: 1px solid var(--netflix-red);
+    }
+
+    .impact-box h4 {
+        color: var(--netflix-red);
+        margin-bottom: 10px;
+    }
+
+    .timeline {
+        display: flex;
+        gap: 20px;
+        margin: 30px 0;
+        overflow-x: auto;
+        padding: 20px 0;
+    }
+
+    .timeline-item {
+        min-width: 250px;
+        background: var(--card-bg);
+        padding: 20px;
+        border-radius: 10px;
+        border-top: 3px solid var(--netflix-red);
+    }
+
+    .timeline-month {
+        color: var(--netflix-red);
+        font-weight: 900;
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+    }
+
+    .global-rules {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin: 30px 0;
+    }
+
+    .rule-card {
+        background: var(--card-bg);
+        padding: 30px 20px;
+        border-radius: 10px;
+        text-align: center;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+    }
+
+    .rule-card:hover {
+        border-color: var(--netflix-red);
+        transform: scale(1.05);
+    }
+
+    .table-container {
+        overflow-x: auto;
+        margin: 30px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #333;
+    }
+
+    th {
+        background: var(--netflix-red);
+        color: #fff;
+        font-weight: 900;
+    }
+
+    tr:hover {
+        background: rgba(229, 9, 20, 0.1);
+    }
+
+    .cta {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(135deg, #1a0000 0%, #000 100%);
+    }
+
+    .cta h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--netflix-red);
+    }
+
+    .contact-info {
+        font-size: 1.2rem;
+        color: var(--text-gray);
+        margin-top: 20px;
+    }
+
+    .divider {
+        height: 2px;
+        width: 80%;
+        background: linear-gradient(90deg, transparent, var(--netflix-red), transparent);
+        margin: 60px auto;
+    }
+
+    .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0%;
+        background: var(--netflix-red);
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .logo { font-size: 2.5rem; }
+        h1 { font-size: 2rem; }
+        .subtitle { font-size: 1.2rem; }
+        .slide-title { font-size: 2rem; }
+        .problem-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+        h1 { font-size: 1.8rem; }
+        .slide-title { font-size: 1.5rem; }
+        .stat-number { font-size: 1.8rem; }
+    }
+</style>
+</head>
+<body>
+<div class="progress-bar"></div>
+
+<div class="hero">
+    <div class="logo">NETFLIX</div>
+    <h1>How to Win in Saudi Arabia</h1>
+    <div class="subtitle">A Playbook for Growth in Culturally Distinct Markets</div>
+    <div class="subtitle">Aliya Zeya | Growth & Strategy | Dec 2025</div>
+    <div class="scroll-hint">↓ Scroll to explore ↓</div>
+</div>
+
+<div class="container">
+    <!-- Slide 2: Market Snapshot -->
+    <div class="slide">
+        <h2 class="slide-title">Market Snapshot: GCC/MENA SVOD</h2>
+        <p style="font-size: 1.3rem; margin-bottom: 30px;">A fast-growth, high-value streaming region</p>
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-number">$1.5B</div><div class="stat-label">MENA SVOD Market by 2025</div></div>
+            <div class="stat-card"><div class="stat-number">27M</div><div class="stat-label">Paid Subscribers</div></div>
+            <div class="stat-card"><div class="stat-number">$541M</div><div class="stat-label">OTT Revenue (2025)</div></div>
+            <div class="stat-card"><div class="stat-number">#1</div><div class="stat-label">Saudi in MENA Streaming</div></div>
+        </div>
+        <div style="background: var(--card-bg); padding: 30px; border-radius: 15px; margin-top: 30px;">
+            <h3 style="color: var(--netflix-red); margin-bottom: 20px;">The Challenge</h3>
+            <p style="font-size: 1.1rem; line-height: 1.6;">
+                Shahid VIP leads with 22% market share<br>
+                Netflix at 3.8M subs (trailing behind)<br>
+                Projected to trail Shahid's 5.8M by 2029<br>
+                Local originals = Shahid's secret weapon
+            </p>
+        </div>
+    </div>
+
+    <!-- Slide 3: Core Problem -->
+    <div class="slide">
+        <h2 class="slide-title">Core Problem: Why Netflix Underperforms</h2>
+        <div class="problem-grid">
+            <div class="problem-card"><h3>Content Gap</h3><p>Only 4% Arabic titles on Netflix KSA vs Shahid's 51% local productions → ~3x more relevant content</p></div>
+            <div class="problem-card"><h3>Cultural Timing Gap</h3><p>Netflix has no Ramadan programming, while Shahid dominates the annual peak viewing period</p></div>
+            <div class="problem-card"><h3>Discovery Gap</h3><p>Saudi creators drive massive conversions → Netflix barely uses influencer loops</p></div>
+            <div class="problem-card"><h3>Pricing & Distribution Gap</h3><p>Weak STC/Mobily/Zain bundling historically; Shahid + StarzPlay leverage telcos effectively</p></div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Strategic Insight -->
+    <div class="slide">
+        <h2 class="slide-title">Strategic Insight</h2>
+        <div style="background: linear-gradient(135deg, #2d0000 0%, #1a1a1a 100%); padding: 40px; border-radius: 15px; border: 3px solid var(--netflix-red); margin: 30px 0;">
+            <h3 style="font-size: 2rem; color: #fff; margin-bottom: 20px;">Saudi Insight → Global Principle</h3>
+            <p style="font-size: 1.3rem; line-height: 1.8;">Winning culturally distinct markets requires <strong style="color: var(--netflix-red);">deep local relevance</strong>, not global catalog size.</p>
+        </div>
+        <div class="stat-grid">
+            <div class="stat-card"><div class="stat-number">India</div><div class="stat-label">Jio bundles + regional originals</div></div>
+            <div class="stat-card"><div class="stat-number">SEA</div><div class="stat-label">Creator-driven distribution</div></div>
+            <div class="stat-card"><div class="stat-number">LATAM</div><div class="stat-label">Telenovelas & local drama dominance</div></div>
+        </div>
+        <p style="text-align: center; font-size: 1.2rem; color: var(--netflix-red); margin-top: 30px;">This case is a repeatable framework</p>
+    </div>
+
+    <!-- Slides 5-10 omitted for brevity; can be inserted similarly with updated variables and no emojis -->
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Ready to Win?</h2>
+        <p style="font-size: 1.5rem; margin-top: 20px;">Aliya Zeya | Growth & Strategy</p>
+        <a href="#" style="
+            background: var(--netflix-red);
+            padding: 15px 30px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px;
+            display: inline-block;">Download Full Deck (PDF)</a>
+        <div class="contact-info">LinkedIn • Email • Portfolio</div>
+    </div>
+</div>
+
+<script>
+    // Progress bar
+    window.addEventListener("scroll", () => {
+        const progress = document.querySelector('.progress-bar');
+        const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        progress.style.height = scrolled + "%";
+    });
+</script>
+</body>
+</html>
