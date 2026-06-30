@@ -12,7 +12,7 @@ https://aliya-create.github.io/Netflix-x-Saudi-Growth-Strategy/
 Saudi is MENA's #1 streaming market, but Netflix trails Shahid on:  
 - **Arabic content** (~4% vs ~50% local titles)  
 - **Cultural moments** (no Ramadan programming)  
-- **Local partnerships** (weaker telco bundles) [web:59][web:61]
+- **Local partnerships** (weaker telco bundles)
 
 ---
 
